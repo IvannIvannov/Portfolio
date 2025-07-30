@@ -32,7 +32,7 @@
         <div class="contact-form-container">
             <h1>Let's get in touch</h1>
             <p>I'm always open to discussing projects or collaborations.</p>
-            <form class="contact-form" action="#" method="POST" novalidate>
+            <form id="contact-form" class="contact-form" action="#" method="POST" novalidate>
                 <input type="text" name="name" placeholder="Your Name" required />
                 <input type="email" name="email" placeholder="Your Email" required />
                 <textarea name="message" placeholder="Your Message" required></textarea>
@@ -65,6 +65,23 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init("FVqK0YPmylRafsFN1");
+
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            emailjs.sendForm("service_oyhmimp", "template_7ipsl3l", this)
+                .then(() => {
+                    alert("Message sent successfully!");
+                    this.reset();
+                }, (error) => {
+                    alert("Failed to send message: " + error.text);
+                });
+        });
+    </script>
 </body>
 
 </html>
