@@ -245,25 +245,24 @@ nav a.active {
 
 .skills-section {
   max-width: 920px;
-  margin: 5px auto 100px;
-  padding: 20px 40px;
+  margin: -50px auto 100px;
+  padding: 30px 40px;
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
 .skills-section h2 {
-  font-size: 36px;
-  margin-bottom: 30px;
-  color: #232526;
+  font-size: 38px;
+  margin-bottom: 35px;
+  color: #1c1e21;
 }
 
 .skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 550px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
   margin: 0 auto;
   text-align: left;
 }
@@ -271,30 +270,31 @@ nav a.active {
 .skill {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .skill span {
   font-weight: 700;
-  color: #232526;
-  font-size: 18px;
+  font-size: 17px;
+  color: #1c1e21;
 }
 
 .skill-bar {
   width: 100%;
-  height: 14px;
-  background-color: #ddd;
-  border-radius: 7px;
+  height: 12px;
+  background-color: #e4e6eb;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .skill-level {
   height: 100%;
-  background-color: #61dafb; /* или друг акцентен цвят */
-  border-radius: 7px 0 0 7px;
+  background: #61dafb;
+  border-radius: 6px;
+  animation: none;
   transition: width 0.5s ease-in-out;
-  animation: pulseBlue 2.5s infinite ease-in-out;
 }
+
 
 @keyframes pulseBlue {
   0%, 100% {
