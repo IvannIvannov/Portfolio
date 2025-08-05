@@ -16,7 +16,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/home/home.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
                 <li><a href="/projects/projects.html">Projects</a></li>
                 <li><a href="/about/about.html">About</a></li>
                 <li><a class="active" href="/contact/contact.html">Contact</a></li>
@@ -67,24 +67,28 @@
     </footer>
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
     <script>
-        emailjs.init("FVqK0YPmylRafsFN1");
+        window.onload = function () {
+            emailjs.init("FVqK0YPmylRafsFN1");
 
-        document.getElementById("contact-form").addEventListener("submit", function (e) {
-            e.preventDefault();
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
+                e.preventDefault();
 
-            emailjs.sendForm("service_oyhmimp", "template_7ipsl3l", this)
-                .then(() => {
-                    const formContainer = document.querySelector('.contact-form-container');
-                    formContainer.classList.add('fade-out');
-
-                    setTimeout(() => {
-                        window.location.href = "/home/home.html";
-                    }, 800); // изчакай анимацията да свърши
-                })
-
-        });
+                emailjs.sendForm("service_oyhmimp", "template_7ipsl3l", this)
+                    .then(() => {
+                        alert("Message sent successfully!");
+                        this.reset();
+                    })
+                    .catch((error) => {
+                        console.error("EmailJS error:", error);
+                        alert("Failed to send message. Please try again.");
+                    });
+            });
+        };
     </script>
+
+
 </body>
 
 </html>
