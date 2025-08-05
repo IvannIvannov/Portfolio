@@ -295,3 +295,10 @@ nav a.active {
     transform: scale(0.95);
   }
 }
+
+button.btn-sent {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 0 8px #28a745;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
