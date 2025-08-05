@@ -76,6 +76,7 @@ nav a.active {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -83,13 +84,17 @@ nav a.active {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
+
 .contact-form-container {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 40px;
@@ -153,8 +158,15 @@ nav a.active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 800px) {
@@ -271,4 +283,15 @@ nav a.active {
 
 .cv-download:hover {
   color: #00bfa5;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }

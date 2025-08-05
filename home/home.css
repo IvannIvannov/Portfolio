@@ -391,18 +391,106 @@ nav a.active {
 }
 
 /* Responsive */
-@media (max-width: 800px) {
+/* Responsive за таблети и телефони */
+@media (max-width: 768px) {
+
+  /* Навиваме херо секцията вертикално */
   .hero {
     flex-direction: column;
-    padding: 120px 20px 40px;
+    padding: 100px 20px 40px;
+    gap: 30px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   .hero-right img {
     max-width: 300px;
-    margin-top: 30px;
+    margin-top: 40px;
+    animation: none; /* или може да оставиш */
   }
 
-  .nav-links {
-    gap: 16px;
+  /* About Preview */
+  .about-preview {
+    padding: 60px 15px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .about-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-text h2 {
+    font-size: 1.7rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+  /* Feedback */
+  .feedback-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .feedback-card {
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-left,
+  .footer-right {
+    max-width: 100%;
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .footer-right {
+    font-style: normal;
   }
 }
+

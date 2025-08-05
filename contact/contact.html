@@ -75,11 +75,14 @@
 
             emailjs.sendForm("service_oyhmimp", "template_7ipsl3l", this)
                 .then(() => {
-                    alert("Message sent successfully!");
-                    this.reset();
-                }, (error) => {
-                    alert("Failed to send message: " + error.text);
-                });
+                    const formContainer = document.querySelector('.contact-form-container');
+                    formContainer.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        window.location.href = "/home/home.html";
+                    }, 800); // изчакай анимацията да свърши
+                })
+
         });
     </script>
 </body>
