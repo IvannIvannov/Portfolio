@@ -64,7 +64,8 @@
         <h2>What They Say</h2>
         <div class="feedback-container">
             <div class="feedback-card">
-                <p>“Excellent work! The project was completed on time and exceeded my expectations. He working great!”</p>
+                <p>“Excellent work! The project was completed on time and exceeded my expectations. He working great!”
+                </p>
                 <h4>Anastasia Paskaleva</h4>
                 <span>Freelance Client</span>
             </div>
@@ -103,8 +104,26 @@
         </div>
     </footer>
 
+    <script>
+        // Fade-in on scroll
+        const revealOnScroll = () => {
+            const elements = document.querySelectorAll('.reveal');
+            const triggerBottom = window.innerHeight * 0.85;
+
+            elements.forEach(el => {
+                const boxTop = el.getBoundingClientRect().top;
+                if (boxTop < triggerBottom) {
+                    el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+
 </body>
-
-
 
 </html>
