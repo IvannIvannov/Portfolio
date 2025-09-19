@@ -289,6 +289,31 @@ nav a.active {
   animation: fadeOut 0.8s forwards;
 }
 
+/* По подразбиране няма рамка */
+input {
+    border: 2px solid #ccc;
+    transition: border 0.3s ease;
+}
+
+/* Зелена рамка само ако е валидно и вече има текст */
+input:valid:not(:placeholder-shown) {
+    border: 2px solid #28a745;
+}
+
+/* Червена рамка само ако е невалидно и вече има текст */
+input:invalid:not(:placeholder-shown) {
+    border: 2px solid #dc3545;
+}
+
+/* Стил за бутона изпратено */
+button.btn-sent {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 0 8px #28a745;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 @keyframes fadeOut {
   to {
     opacity: 0;
