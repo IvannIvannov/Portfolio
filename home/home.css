@@ -5,12 +5,35 @@
   box-sizing: border-box;
 }
 
-body,
-html {
+body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #232526, #414345);
+  margin: 0;
   color: #eaeaea;
+  background: linear-gradient(to right, #232526, #414345);
+  position: relative;
+  overflow-x: hidden; /* предотвратява хоризонтален скрол */
 }
+
+body::before {
+  content: "";
+  position: fixed; /* фиксира фона на viewport */
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 25% 25%, rgba(97, 218, 251, 0.15), transparent 50%),
+              radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1), transparent 50%);
+  animation: waveMove 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes waveMove {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-10%, 5%) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
 
 /* Navigation */
 header {
@@ -198,10 +221,10 @@ nav a.active {
   /* задължително */
   background: linear-gradient(to right, #232526, #414345);
   color: #eaeaea;
-  padding: 100px 20px;
+  padding: 100px 0px;
   text-align: center;
   overflow: hidden;
-  /* за да не излиза сиянието навън */
+  margin-bottom: 0;
 }
 
 .feedback h2 {
@@ -273,10 +296,10 @@ nav a.active {
   background: linear-gradient(to right, #ffffff, #cccccc);
   color: #ddd;
   padding: 40px 60px;
-  margin-top: 60px;
   font-size: 16px;
   letter-spacing: 0.03em;
   padding-left: 80px;
+  margin-top: 0;
 }
 
 .footer-container {
