@@ -12,20 +12,19 @@
 <body>
     <h1>Play Snake 🐍</h1>
 
-    <div class="game-container">
-        <!-- SCORE PANEL -->
-        <div class="score-panel">
-            <div class="current-score">Score: <span id="score">0</span></div>
-            <h3>🏆 High Scores</h3>
-            <ol id="highScores"></ol>
-        </div>
+    <!-- SCORE PANEL -->
+    <div class="score-panel">
+        <div class="current-score">Score: <span id="score">0</span></div>
+        <h3>High Scores</h3>
+        <ol id="highScores"></ol>
+    </div>
 
-        <!-- CANVAS -->
+    <!-- GAME -->
+    <div class="game-container">
         <canvas id="snakeCanvas" width="400" height="400"></canvas>
     </div>
 
     <p>Use arrow keys to control the snake!</p>
-
     <button id="startGame" class="btn">Start Game</button>
     <br />
     <a href="/index.html" class="btn">Back to Portfolio</a>

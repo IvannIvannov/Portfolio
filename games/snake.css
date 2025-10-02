@@ -1,125 +1,131 @@
 /* BODY */
 body {
-  background: 
-    radial-gradient(circle at 25% 30%, rgba(97,218,251,0.2) 0%, transparent 50%),
-    radial-gradient(circle at 75% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
-    linear-gradient(120deg, #232526, #414345);
-  background-size: 200% 200%;
-  animation: moveBackground 20s linear infinite;
-  overflow: hidden;
-  color: #eaeaea;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-@keyframes moveBackground {
-  0% { background-position: 0% 0%, 100% 100%, 0% 0%; }
-  50% { background-position: 50% 50%, 50% 50%, 50% 50%; }
-  100% { background-position: 0% 0%, 100% 100%, 0% 0%; }
+    background: #121212;
+    color: #eaeaea;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* TITLE */
 h1 {
-  margin-top: 30px;
-  font-size: 2.5rem;
-  color: #61dafb;
-  text-shadow: 0 0 15px #61dafb;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: #00ffe0;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-/* CANVAS WRAPPER */
+/* GAME CONTAINER */
 .game-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 /* CANVAS */
 #snakeCanvas {
-  background: #232526;
-  border: 2px solid #61dafb;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(97, 218, 251, 0.8);
-  animation: canvasPulse 2s ease-in-out infinite alternate;
+    background: #1f1f1f;
+    border: 2px solid #00ffe0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
+    transition: box-shadow 0.3s ease;
 }
 
-@keyframes canvasPulse {
-  0% { box-shadow: 0 0 25px rgba(97, 218, 251, 0.6); }
-  100% { box-shadow: 0 0 50px rgba(97, 218, 251, 1); }
+#snakeCanvas:hover {
+    box-shadow: 0 6px 25px rgba(0, 255, 224, 0.5);
 }
 
-/* SCORE PANEL – винаги най-вляво */
+/* SCORE PANEL */
 .score-panel {
-  position: absolute;
-  top: 120px;
-  left: 20px;
-  width: 180px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 255, 224, 0.3);
-  color: #00ffe0;
-  font-family: 'Orbitron', sans-serif;
-  text-align: left;
-  box-shadow: 0 0 20px rgba(0, 255, 224, 0.4);
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    width: 220px;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 12px;
+    border: 1px solid #00ffe0;
+    color: #ffffff;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 255, 224, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.score-panel .current-score {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #00ffe0;
 }
 
 .score-panel h3 {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: #61dafb;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #aaaaaa;
 }
 
 .score-panel ol {
-  padding-left: 20px;
-  margin: 5px 0;
+    list-style: decimal;
+    padding-left: 20px;
+    margin: 0;
+    color: #dddddd;
+}
+
+.score-panel li {
+    font-size: 1rem;
+    padding: 6px 8px;
+    margin-bottom: 5px;
+    background: #2a2a2a;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.score-panel li:hover {
+    background: #00ffe0;
+    color: #121212;
+    transform: translateX(3px);
 }
 
 /* START BUTTON */
 #startGame {
-  padding: 16px 32px;
-  margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #232526;
-  background: #61dafb;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  box-shadow: 0 0 30px rgba(97, 218, 251, 0.6);
-  transition: all 0.3s ease;
-  animation: pulseButton 2s infinite alternate;
+    padding: 14px 28px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #121212;
+    background: #00ffe0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 224, 0.3);
+    transition: all 0.3s ease;
 }
 
 #startGame:hover {
-  background: #ffffff;
-  color: #232526;
-  transform: scale(1.05);
-  box-shadow: 0 0 50px rgba(97, 218, 251, 1);
-}
-
-@keyframes pulseButton {
-  0% { box-shadow: 0 0 30px rgba(97, 218, 251, 0.6); }
-  100% { box-shadow: 0 0 50px rgba(97, 218, 251, 1); }
+    background: #00c8b8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 224, 0.5);
 }
 
 /* BACK LINK */
 a.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: transparent;
-  color: #61dafb;
-  text-decoration: none;
-  border: 2px solid #61dafb;
-  border-radius: 12px;
-  font-weight: bold;
-  transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: transparent;
+    color: #00ffe0;
+    text-decoration: none;
+    border: 1px solid #00ffe0;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 a.btn:hover {
-  background: #61dafb;
-  color: #232526;
-  transform: scale(1.05);
+    background: #00ffe0;
+    color: #121212;
+    transform: translateY(-2px);
 }
