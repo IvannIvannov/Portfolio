@@ -93,7 +93,6 @@ window.addEventListener("load", () => {
             clearInterval(game);
             gameStarted = false;
             saveHighScore(score);
-            renderHighScores();
             alert("Game Over! Your score: " + score);
         }
 
@@ -109,14 +108,19 @@ window.addEventListener("load", () => {
         highScores.sort((a, b) => b - a);
         highScores = highScores.slice(0, 5);
         localStorage.setItem("snakeHighScores", JSON.stringify(highScores));
+        renderHighScores(s); // показваме новия high score с анимация
     }
 
-    function renderHighScores() {
+    function renderHighScores(newScore = null) {
         if (!highScoresEl) return;
         highScoresEl.innerHTML = "";
         highScores.forEach((s, i) => {
             const li = document.createElement("li");
             li.textContent = `${i + 1}. ${s}`;
+            // ако имаме нов high score и е първи елемент
+            if (newScore !== null && s === newScore && i === 0) {
+                li.classList.add("new-score");
+            }
             highScoresEl.appendChild(li);
         });
     }
