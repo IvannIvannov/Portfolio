@@ -29,6 +29,19 @@
         <canvas id="snakeCanvas" width="400" height="400"></canvas>
     </div>
 
+    <!-- Game Over Overlay -->
+    <div class="game-over-overlay" id="gameOverOverlay">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Your Score: <span id="finalScore">0</span></p>
+            <div class="buttons">
+                <button id="restartBtn">Restart</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
     <p>Use arrow keys to control the snake!</p>
     <button id="startGame" class="btn">Start Game</button>
     <br />
