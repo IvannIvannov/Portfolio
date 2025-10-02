@@ -129,7 +129,8 @@ window.addEventListener("load", () => {
         highScoresEl.innerHTML = "";
         highScores.forEach((s, i) => {
             const li = document.createElement("li");
-            li.textContent = `${i + 1}. ${s}`;
+            li.textContent = s;
+
             if (newScore !== null && s === newScore && i === 0) li.classList.add("new-score");
             highScoresEl.appendChild(li);
         });
