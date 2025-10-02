@@ -5,7 +5,12 @@ let highScores = JSON.parse(localStorage.getItem("snakeHighScores")) || [];
 window.addEventListener("load", () => {
     const canvas = document.getElementById("snakeCanvas");
     const startBtn = document.getElementById("startGame");
-    if (!canvas || !startBtn) return;
+    const overlay = document.getElementById("gameOverOverlay");
+    const finalScoreEl = document.getElementById("finalScore");
+    const restartBtn = document.getElementById("restartBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    if (!canvas || !startBtn || !overlay) return;
 
     scoreEl = document.querySelector(".current-score span");
     highScoresEl = document.getElementById("highScores");
@@ -52,11 +57,11 @@ window.addEventListener("load", () => {
             }
 
             let gradient = ctx.createRadialGradient(seg.x + box / 2, seg.y + box / 2, 2, seg.x + box / 2, seg.y + box / 2, box);
-            gradient.addColorStop(0, i === 0 ? "#00ffe0" : "#2afcff");
+            gradient.addColorStop(0, i === 0 ? "#61dafb" : "#4bb0e0");
             gradient.addColorStop(1, "transparent");
 
             ctx.fillStyle = gradient;
-            ctx.shadowColor = i === 0 ? "#00ffe0" : "#2afcff";
+            ctx.shadowColor = i === 0 ? "#61dafb" : "#4bb0e0";
             ctx.shadowBlur = i === 0 ? 20 : 10;
 
             if (i === 0 && seg.pulse) {
@@ -73,7 +78,7 @@ window.addEventListener("load", () => {
         ctx.shadowBlur = 0;
 
         ctx.fillStyle = "#ffffff";
-        ctx.shadowColor = "#00ffe0";
+        ctx.shadowColor = "#61dafb";
         ctx.shadowBlur = 15;
         ctx.fillRect(food.x, food.y, box, box);
         ctx.shadowBlur = 0;
@@ -101,9 +106,7 @@ window.addEventListener("load", () => {
 
         if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
             clearInterval(game);
-            gameStarted = false;
-            saveHighScore(score);
-            alert("Game Over! Your score: " + score);
+            gameOver();
         }
 
         snake.unshift(newHead);
@@ -130,6 +133,22 @@ window.addEventListener("load", () => {
             if (newScore !== null && s === newScore && i === 0) li.classList.add("new-score");
             highScoresEl.appendChild(li);
         });
+    }
+
+    function gameOver() {
+        gameStarted = false;
+        saveHighScore(score);
+        finalScoreEl.textContent = score;
+        overlay.classList.add("show");
+
+        restartBtn.onclick = () => {
+            overlay.classList.remove("show");
+            initGame();
+        }
+
+        cancelBtn.onclick = () => {
+            overlay.classList.remove("show");
+        }
     }
 
     renderHighScores();

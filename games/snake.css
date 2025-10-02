@@ -185,3 +185,76 @@ a.btn:hover {
 .snake-head-pulse {
     animation: snakePulse 0.2s ease-in-out;
 }
+
+.game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.game-over-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.game-over-content {
+    background: #1f1f1f;
+    padding: 30px 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #61dafb;
+    box-shadow: 0 8px 30px rgba(97, 218, 251, 0.3);
+}
+
+.game-over-content h2 {
+    margin-bottom: 10px;
+    color: #61dafb;
+    font-size: 2rem;
+}
+
+.game-over-content p {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.game-over-content .buttons button {
+    padding: 10px 25px;
+    margin: 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#restartBtn {
+    background: #61dafb;
+    color: #121212;
+}
+
+#restartBtn:hover {
+    background: #4bb0e0;
+}
+
+#cancelBtn {
+    background: transparent;
+    border: 1px solid #61dafb;
+    color: #61dafb;
+}
+
+#cancelBtn:hover {
+    background: #61dafb;
+    color: #121212;
+}
