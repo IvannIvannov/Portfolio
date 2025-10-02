@@ -69,7 +69,14 @@ window.addEventListener("load", () => {
         if (snakeX === food.x && snakeY === food.y) {
             score++;
             updateScore();
-            food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
+            // pulse animation
+            scoreEl.classList.add("pulse");
+            setTimeout(() => scoreEl.classList.remove("pulse"), 300);
+
+            food = {
+                x: Math.floor(Math.random() * 20) * box,
+                y: Math.floor(Math.random() * 20) * box
+            };
         } else {
             snake.pop();
         }
