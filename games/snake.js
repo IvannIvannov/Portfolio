@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
     const startBtn = document.getElementById("startGame");
     if (!canvas || !startBtn) return;
 
-    scoreEl = document.getElementById("score");
+    scoreEl = document.querySelector(".current-score span");
     highScoresEl = document.getElementById("highScores");
 
     const ctx = canvas.getContext("2d");
@@ -16,19 +16,16 @@ window.addEventListener("load", () => {
     let gameStarted = false;
 
     function initGame() {
-        snake = [{ x: 8 * box, y: 8 * box }];
+        snake = [{ x: 8 * box, y: 8 * box, pulse: false }];
         direction = "RIGHT";
-        food = {
-            x: Math.floor(Math.random() * 20) * box,
-            y: Math.floor(Math.random() * 20) * box
-        };
+        food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
         score = 0;
         updateScore();
 
         document.addEventListener("keydown", control);
 
         if (game) clearInterval(game);
-        game = setInterval(draw, 100);
+        game = setInterval(draw, 70);
         gameStarted = true;
     }
 
@@ -40,23 +37,46 @@ window.addEventListener("load", () => {
     }
 
     function collision(head, array) {
-        return array.some(seg => seg.x === head.x && seg.y === head.y);
+        return array.some(seg => Math.round(seg.x) === Math.round(head.x) && Math.round(seg.y) === Math.round(head.y));
     }
 
     function draw() {
-        ctx.fillStyle = "#232526";
+        ctx.fillStyle = "#1f1f1f";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         for (let i = 0; i < snake.length; i++) {
-            ctx.fillStyle = i === 0 ? "#61dafb" : "#e0f7ff";
-            ctx.shadowColor = i === 0 ? "#61dafb" : "#a0f0ff";
-            ctx.shadowBlur = i === 0 ? 15 : 5;
-            ctx.fillRect(snake[i].x, snake[i].y, box, box);
+            let seg = snake[i];
+            if (i > 0) {
+                seg.x += (snake[i - 1].x - seg.x) * 0.18;
+                seg.y += (snake[i - 1].y - seg.y) * 0.18;
+            }
+
+            let gradient = ctx.createRadialGradient(seg.x + box / 2, seg.y + box / 2, 2, seg.x + box / 2, seg.y + box / 2, box);
+            gradient.addColorStop(0, i === 0 ? "#00ffe0" : "#2afcff");
+            gradient.addColorStop(1, "transparent");
+
+            ctx.fillStyle = gradient;
+            ctx.shadowColor = i === 0 ? "#00ffe0" : "#2afcff";
+            ctx.shadowBlur = i === 0 ? 20 : 10;
+
+            if (i === 0 && seg.pulse) {
+                ctx.save();
+                ctx.translate(seg.x + box / 2, seg.y + box / 2);
+                ctx.scale(1.25, 1.25);
+                ctx.fillRect(-box / 2, -box / 2, box, box);
+                ctx.restore();
+                seg.pulse = false;
+            } else {
+                ctx.fillRect(seg.x, seg.y, box, box);
+            }
         }
         ctx.shadowBlur = 0;
 
         ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "#00ffe0";
+        ctx.shadowBlur = 15;
         ctx.fillRect(food.x, food.y, box, box);
+        ctx.shadowBlur = 0;
 
         let snakeX = snake[0].x;
         let snakeY = snake[0].y;
@@ -66,30 +86,20 @@ window.addEventListener("load", () => {
         if (direction === "RIGHT") snakeX += box;
         if (direction === "DOWN") snakeY += box;
 
-        if (snakeX === food.x && snakeY === food.y) {
+        if (Math.round(snakeX) === food.x && Math.round(snakeY) === food.y) {
             score++;
             updateScore();
-            // pulse animation
             scoreEl.classList.add("pulse");
             setTimeout(() => scoreEl.classList.remove("pulse"), 300);
-
-            food = {
-                x: Math.floor(Math.random() * 20) * box,
-                y: Math.floor(Math.random() * 20) * box
-            };
+            snake[0].pulse = true;
+            food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
         } else {
             snake.pop();
         }
 
-        const newHead = { x: snakeX, y: snakeY };
+        const newHead = { x: snakeX, y: snakeY, pulse: false };
 
-        if (
-            snakeX < 0 ||
-            snakeX >= canvas.width ||
-            snakeY < 0 ||
-            snakeY >= canvas.height ||
-            collision(newHead, snake)
-        ) {
+        if (snakeX < 0 || snakeX >= canvas.width || snakeY < 0 || snakeY >= canvas.height || collision(newHead, snake)) {
             clearInterval(game);
             gameStarted = false;
             saveHighScore(score);
@@ -108,7 +118,7 @@ window.addEventListener("load", () => {
         highScores.sort((a, b) => b - a);
         highScores = highScores.slice(0, 5);
         localStorage.setItem("snakeHighScores", JSON.stringify(highScores));
-        renderHighScores(s); // показваме новия high score с анимация
+        renderHighScores(s);
     }
 
     function renderHighScores(newScore = null) {
@@ -117,10 +127,7 @@ window.addEventListener("load", () => {
         highScores.forEach((s, i) => {
             const li = document.createElement("li");
             li.textContent = `${i + 1}. ${s}`;
-            // ако имаме нов high score и е първи елемент
-            if (newScore !== null && s === newScore && i === 0) {
-                li.classList.add("new-score");
-            }
+            if (newScore !== null && s === newScore && i === 0) li.classList.add("new-score");
             highScoresEl.appendChild(li);
         });
     }
@@ -131,8 +138,6 @@ window.addEventListener("load", () => {
 
     document.addEventListener("keydown", (e) => {
         const arrows = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
-        if (arrows.includes(e.key) && !gameStarted) {
-            initGame();
-        }
+        if (arrows.includes(e.key) && !gameStarted) initGame();
     });
 });
