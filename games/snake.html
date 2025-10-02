@@ -9,16 +9,26 @@
     <script src="/games/snake.js" defer></script>
 </head>
 
-<body style="text-align:center; color:#eaeaea; background:#232526; font-family: Arial, sans-serif;">
+<body>
     <h1>Play Snake 🐍</h1>
-    <canvas id="snakeCanvas" width="400" height="400"
-        style="background:#232526; border:2px solid #61dafb; margin-top:20px;"></canvas>
+
+    <div class="game-container">
+        <!-- SCORE PANEL -->
+        <div class="score-panel">
+            <div class="current-score">Score: <span id="score">0</span></div>
+            <h3>🏆 High Scores</h3>
+            <ol id="highScores"></ol>
+        </div>
+
+        <!-- CANVAS -->
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+    </div>
+
     <p>Use arrow keys to control the snake!</p>
-    <button id="startGame" class="btn" style="background:#61dafb; color:#232526; margin-top:20px;">
-        Start Game
-    </button>
+
+    <button id="startGame" class="btn">Start Game</button>
     <br />
-    <a href="/index.html" class="btn" style="margin-top:20px;">Back to Portfolio</a>
+    <a href="/index.html" class="btn">Back to Portfolio</a>
 </body>
 
 </html>

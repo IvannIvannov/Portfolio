@@ -1,12 +1,19 @@
+let scoreEl = null;
+let highScoresEl = null;
+let highScores = JSON.parse(localStorage.getItem("snakeHighScores")) || [];
+
 window.addEventListener("load", () => {
     const canvas = document.getElementById("snakeCanvas");
     const startBtn = document.getElementById("startGame");
     if (!canvas || !startBtn) return;
 
+    scoreEl = document.getElementById("score");
+    highScoresEl = document.getElementById("highScores");
+
     const ctx = canvas.getContext("2d");
     const box = 20;
     let snake, direction, food, score, game;
-    let gameStarted = false; 
+    let gameStarted = false;
 
     function initGame() {
         snake = [{ x: 8 * box, y: 8 * box }];
@@ -16,12 +23,13 @@ window.addEventListener("load", () => {
             y: Math.floor(Math.random() * 20) * box
         };
         score = 0;
+        updateScore();
 
         document.addEventListener("keydown", control);
 
-        if (game) clearInterval(game); 
+        if (game) clearInterval(game);
         game = setInterval(draw, 100);
-        gameStarted = true; 
+        gameStarted = true;
     }
 
     function control(e) {
@@ -32,10 +40,7 @@ window.addEventListener("load", () => {
     }
 
     function collision(head, array) {
-        for (let i = 0; i < array.length; i++) {
-            if (head.x === array[i].x && head.y === array[i].y) return true;
-        }
-        return false;
+        return array.some(seg => seg.x === head.x && seg.y === head.y);
     }
 
     function draw() {
@@ -53,10 +58,6 @@ window.addEventListener("load", () => {
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(food.x, food.y, box, box);
 
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "20px Arial";
-        ctx.fillText("Score: " + score, 10, 30);
-
         let snakeX = snake[0].x;
         let snakeY = snake[0].y;
 
@@ -67,6 +68,7 @@ window.addEventListener("load", () => {
 
         if (snakeX === food.x && snakeY === food.y) {
             score++;
+            updateScore();
             food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
         } else {
             snake.pop();
@@ -74,7 +76,6 @@ window.addEventListener("load", () => {
 
         const newHead = { x: snakeX, y: snakeY };
 
-        // проверка за Game Over
         if (
             snakeX < 0 ||
             snakeX >= canvas.width ||
@@ -84,11 +85,36 @@ window.addEventListener("load", () => {
         ) {
             clearInterval(game);
             gameStarted = false;
+            saveHighScore(score);
+            renderHighScores();
             alert("Game Over! Your score: " + score);
         }
 
         snake.unshift(newHead);
     }
+
+    function updateScore() {
+        if (scoreEl) scoreEl.textContent = score;
+    }
+
+    function saveHighScore(s) {
+        highScores.push(s);
+        highScores.sort((a, b) => b - a);
+        highScores = highScores.slice(0, 5);
+        localStorage.setItem("snakeHighScores", JSON.stringify(highScores));
+    }
+
+    function renderHighScores() {
+        if (!highScoresEl) return;
+        highScoresEl.innerHTML = "";
+        highScores.forEach((s, i) => {
+            const li = document.createElement("li");
+            li.textContent = `${i + 1}. ${s}`;
+            highScoresEl.appendChild(li);
+        });
+    }
+
+    renderHighScores();
 
     startBtn.addEventListener("click", initGame);
 
