@@ -166,7 +166,7 @@ nav a.active {
 .contact-btn:hover {
   background-color: #61dafb;
   transform: translateX(-20px) scale(1.1);
-  
+
 }
 
 .about-images {
@@ -195,9 +195,10 @@ nav a.active {
 
 /* ====== Certificates Carousel ====== */
 .certificates-section {
-  max-width: 1000px;
-  margin: 80px auto;
-  padding: 20px 40px;
+  width: 100%;          
+  max-width: 1200px;    
+  margin: 120px auto;    
+  padding: 30px;        
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -215,6 +216,7 @@ nav a.active {
   display: flex;
   align-items: center;
   gap: 10px;
+
 }
 
 .carousel-track {
@@ -225,11 +227,13 @@ nav a.active {
   padding-bottom: 15px;
   flex: 1;
 
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .carousel-track::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
+  /* Chrome, Safari, Edge */
 }
 
 .carousel-track::-webkit-scrollbar-thumb {
@@ -242,7 +246,7 @@ nav a.active {
 }
 
 .certificate {
-  flex: 0 0 250px; 
+  flex: 0 0 250px;
   background: #f9f9f9;
   border-radius: 10px;
   padding: 10px;
@@ -270,18 +274,7 @@ nav a.active {
 
 /* Carousel buttons */
 .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(35, 37, 38, 0.8);
-  color: white;
-  border: none;
-  font-size: 20px;
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s;
+  display: none;
 }
 
 .carousel-btn:hover {
@@ -350,9 +343,12 @@ nav a.active {
 
 
 @keyframes pulseBlue {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -488,9 +484,11 @@ nav a.active {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -500,6 +498,7 @@ nav a.active {
   .hero-left h1 {
     font-size: 2rem;
   }
+
   .nav-links {
     flex-direction: column;
     gap: 1rem;
@@ -512,17 +511,21 @@ nav a.active {
     flex-direction: column;
     align-items: center;
   }
+
   .hero {
     flex-direction: column;
     text-align: center;
   }
+
   .hero-left h1 {
     font-size: 2.3rem;
   }
+
   .about-container {
     flex-direction: column;
     text-align: center;
   }
+
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -534,6 +537,7 @@ nav a.active {
   .hero-left h1 {
     font-size: 2.5rem;
   }
+
   .btn {
     display: block;
     width: 100%;
@@ -547,10 +551,12 @@ nav a.active {
     flex-direction: column;
     text-align: center;
   }
+
   .about-container {
     flex-direction: column;
     text-align: center;
   }
+
   .footer-container {
     flex-direction: column;
     text-align: center;
