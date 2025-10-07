@@ -72,6 +72,35 @@ nav a.active {
   color: #000;
 }
 
+#progress-container {
+  position: relative;
+  width: 120px;
+  height: 20px;
+  background: #111;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+#progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #00ff00;
+  transition: width 0.5s ease;
+}
+
+#progress-text {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  color: #00ff00;
+}
+
+
 /* Hero Section */
 .hero {
   display: flex;
