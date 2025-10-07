@@ -1,3 +1,4 @@
+/* --- Body и общи стилове --- */
 body {
     background: linear-gradient(to left, #232526, #414345);
     color: #eaeaea;
@@ -7,6 +8,7 @@ body {
     padding: 0;
 }
 
+/* Заглавие */
 h1 {
     margin-top: 30px;
     font-size: 2.5rem;
@@ -15,12 +17,14 @@ h1 {
     letter-spacing: 1px;
 }
 
+/* Контейнер за играта */
 .game-container {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
 
+/* Canvas на змията */
 #snakeCanvas {
     background: #1f1f1f;
     border: 2px solid #61dafb;
@@ -33,6 +37,7 @@ h1 {
     box-shadow: 0 6px 25px rgba(97, 218, 251, 0.5);
 }
 
+/* Панел за резултат */
 .score-panel {
     position: absolute;
     top: 120px;
@@ -84,60 +89,85 @@ h1 {
     transform: translateX(4px);
 }
 
-#startGame {
-    padding: 14px 28px;
-    margin-top: 20px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #121212;
-    background: #61dafb;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(97, 218, 251, 0.3);
-    transition: all 0.3s ease;
-}
-
-#startGame:hover {
-    background: #4bb0e0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(97, 218, 251, 0.5);
-}
-
 a.btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 20px;
     padding: 12px 24px;
-    background: transparent;
-    color: #61dafb;
+    font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
-    border: 1px solid #61dafb;
+    color: #232526;
+    background: white;
     border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(97, 218, 251, 0.2);
+    transition: all 0.3s ease;
 }
 
 a.btn:hover {
     background: #61dafb;
-    color: #121212;
-    transform: translateY(-2px);
+    color: #232526;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(97, 218, 251, 0.6);
+    animation: pulse 1s ease-in-out infinite;
 }
 
+
+/* --- Бутоните с Home Page стил --- */
+#startGame,
+#restartBtn,
+#cancelBtn {
+    padding: 12px 24px;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #232526;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(97, 218, 251, 0.2);
+    transition: all 0.3s ease;
+}
+
+#startGame:hover,
+#restartBtn:hover,
+#cancelBtn:hover {
+    background: #61dafb;
+    color: #232526;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(97, 218, 251, 0.6);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Secondary бутон за Cancel */
+#cancelBtn {
+    background: transparent;
+    border: 2px solid #61dafb;
+    color: #61dafb;
+}
+
+#cancelBtn:hover {
+    background: #61dafb;
+    color: #232526;
+}
+
+/* Pulse анимация за бутоните */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(97, 218, 251, 0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(97, 218, 251, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(97, 218, 251, 0); }
+}
+
+/* --- Анимации за резултат --- */
 @keyframes scorePulse {
-    0% {
-        transform: scale(1);
-        color: #61dafb;
-    }
-
-    50% {
-        transform: scale(1.3);
-        color: #ffffff;
-    }
-
-    100% {
-        transform: scale(1);
-        color: #61dafb;
-    }
+    0% { transform: scale(1); color: #61dafb; }
+    50% { transform: scale(1.3); color: #ffffff; }
+    100% { transform: scale(1); color: #61dafb; }
 }
 
 .score-panel .current-score span.pulse {
@@ -146,20 +176,9 @@ a.btn:hover {
 }
 
 @keyframes newScore {
-    0% {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    0% { transform: translateY(-10px); opacity: 0; }
+    50% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 .score-panel li.new-score {
@@ -168,24 +187,18 @@ a.btn:hover {
     font-weight: 600;
 }
 
+/* --- Анимация за змията --- */
 @keyframes snakePulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 .snake-head-pulse {
     animation: snakePulse 0.2s ease-in-out;
 }
 
+/* --- Game Over Overlay --- */
 .game-over-overlay {
     position: fixed;
     top: 0;
@@ -229,7 +242,7 @@ a.btn:hover {
 }
 
 .game-over-content .buttons button {
-    padding: 10px 25px;
+    padding: 12px 24px;
     margin: 0 10px;
     font-size: 1rem;
     font-weight: 600;
@@ -237,24 +250,4 @@ a.btn:hover {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-#restartBtn {
-    background: #61dafb;
-    color: #121212;
-}
-
-#restartBtn:hover {
-    background: #4bb0e0;
-}
-
-#cancelBtn {
-    background: transparent;
-    border: 1px solid #61dafb;
-    color: #61dafb;
-}
-
-#cancelBtn:hover {
-    background: #61dafb;
-    color: #121212;
 }
