@@ -2,18 +2,30 @@ const track = document.querySelector('.carousel-track');
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
 
-nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: 300, behavior: 'smooth' });
-});
+const certificates = track.children;
+const cloneCount = 3;
+for (let i = 0; i < cloneCount; i++) {
+    const clone = certificates[i].cloneNode(true);
+    track.appendChild(clone);
+}
 
-prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -300, behavior: 'smooth' });
-});
-
-setInterval(() => {
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
+function scrollNext() {
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 1) {
+        track.scrollLeft = 0;
     } else {
         track.scrollBy({ left: 300, behavior: 'smooth' });
     }
-}, 5000);
+}
+
+function scrollPrev() {
+    if (track.scrollLeft <= 0) {
+        track.scrollLeft = track.scrollWidth - track.clientWidth;
+    } else {
+        track.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+}
+
+nextBtn.addEventListener('click', scrollNext);
+prevBtn.addEventListener('click', scrollPrev);
+
+setInterval(scrollNext, 5000);
