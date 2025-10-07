@@ -193,6 +193,7 @@ nav a.active {
   animation-delay: 1s;
 }
 
+/* ====== Certificates Carousel ====== */
 .certificates-section {
   max-width: 1000px;
   margin: 80px auto;
@@ -209,15 +210,42 @@ nav a.active {
   color: #232526;
 }
 
-.certificates-container {
+/* Carousel container */
+.certificates-carousel {
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
+/* Track with horizontal scroll */
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 15px;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 10px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.carousel-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Each certificate card */
 .certificate {
-  max-width: 250px;
+  flex: 0 0 250px; /* фиксирана ширина */
   background: #f9f9f9;
   border-radius: 10px;
   padding: 10px;
@@ -242,6 +270,58 @@ nav a.active {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Carousel buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(35, 37, 38, 0.8);
+  color: white;
+  border: none;
+  font-size: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(97, 218, 251, 0.9);
+}
+
+.carousel-btn.prev {
+  left: -20px;
+}
+
+.carousel-btn.next {
+  right: -20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .certificate {
+    flex: 0 0 200px;
+  }
+  .carousel-btn.prev {
+    left: 0;
+  }
+  .carousel-btn.next {
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate {
+    flex: 0 0 180px;
+  }
+  .carousel-btn {
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+}
+
 
 .skills-section {
   max-width: 920px;

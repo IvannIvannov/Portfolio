@@ -1,4 +1,3 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="about.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
 </head>
 
 <body>
@@ -40,48 +38,55 @@
             </p>
             <button class="contact-btn" onclick="location.href='../contact/contact.html'">Contact</button>
         </div>
+
         <div class="about-images">
             <img src="/src/images/css-13.svg" alt="React Logo" class="img-one" />
         </div>
 
+        <!-- Сертификати - вече като карусел -->
         <section class="certificates-section">
             <h2>My Certificates</h2>
-            <div class="certificates-container">
-                <div class="certificate">
-                    <img src="/src/images/Fundamentals.jpeg" alt="Certificate 1" />
-                    <p>Programming Fundamentals - SoftUni</p>
+
+            <div class="certificates-carousel">
+                <div class="carousel-track">
+                    <div class="certificate">
+                        <img src="/src/images/Fundamentals.jpeg" alt="Certificate 1" />
+                        <p>Programming Fundamentals - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/Advanced.jpeg" alt="Certificate 2" />
+                        <p>JS Advanced - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/HTML&CSS.jpeg" alt="Certificate 3" />
+                        <p>HTML & CSS - SoftUni - Udemy</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/Angular.jpeg" alt="Certificate 4" />
+                        <p>Angular - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/Back-End.jpeg" alt="Certificate 5" />
+                        <p>JS Back-End - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/ReactJS.jpeg" alt="Certificate 6" />
+                        <p>ReactJS - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/IT.jpeg" alt="Certificate 7" />
+                        <p>IT Career Booster - SoftUni</p>
+                    </div>
+                    <div class="certificate">
+                        <img src="/src/images/TS.jpeg" alt="Certificate 8" />
+                        <p>TypeScript - SoftUni</p>
+                    </div>
                 </div>
-                <div class="certificate">
-                    <img src="/src/images/Advanced.jpeg" alt="Certificate 2" />
-                    <p>JS Advanced - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/HTML&CSS.jpeg" alt="Certificate 3" />
-                    <p>HTML & CSS - SoftUni - Udemy</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/Angular.jpeg" alt="Certificate 3" />
-                    <p>Angular - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/Back-End.jpeg" alt="Certificate 3" />
-                    <p>JS Back-End - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/ReactJS.jpeg" alt="Certificate 3" />
-                    <p>ReactJS - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/IT.jpeg" alt="Certificate 3" />
-                    <p>IT Career Booster - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/TS.jpeg" alt="Certificate 3" />
-                    <p>TypeScript - SoftUni</p>
-                </div>
+
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
-
     </main>
 
     <section class="skills-section">
@@ -171,10 +176,8 @@
                     <div class="skill-level" style="width: 60%;"></div>
                 </div>
             </div>
-
         </div>
     </section>
-
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -200,6 +203,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Външен JS за карусела -->
+    <script src="/src/certificates.js"></script>
 </body>
 
 </html>
