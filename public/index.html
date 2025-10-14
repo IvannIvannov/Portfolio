@@ -7,8 +7,7 @@
     <title>Ivan Ivanov | Portfolio</title>
     <link rel="stylesheet" href="home/home.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <script src="src/feedbackAnimation.js"></script>
-
+    <script src="src/feedbackAnimation.js" defer></script>
 </head>
 
 <body>
@@ -26,7 +25,7 @@
 
     <main class="hero">
         <div class="hero-left">
-            <p class="subtitle"> Hello there! I'm</p>
+            <p class="subtitle">Hello there! I'm</p>
             <h1>Ivan Ivanov</h1>
             <p class="description">
                 A passionate Front-End Developer crafting modern, responsive & interactive web experiences.
@@ -50,7 +49,7 @@
     </main>
 
     <section class="about-preview">
-        <div class="about-container">
+        <div class="about-container reveal">
             <div class="about-image">
                 <img src="src/images/Ме3.png" alt="Ivan Ivanov" />
             </div>
@@ -68,13 +67,13 @@
     <section class="feedback">
         <h2>What They Say</h2>
         <div class="feedback-container">
-            <div class="feedback-card">
+            <div class="feedback-card reveal">
                 <p>“Excellent work! The project was completed on time and exceeded my expectations. He working great!”
                 </p>
                 <h4>Anastasia Paskaleva</h4>
                 <span>Freelance Client</span>
             </div>
-            <div class="feedback-card">
+            <div class="feedback-card reveal">
                 <p>“Ivan is a very responsible and creative programmer. We have been working together for two years
                     now.”</p>
                 <h4>Nikolai Aramazov</h4>
@@ -82,7 +81,6 @@
             </div>
         </div>
     </section>
-
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -109,6 +107,7 @@
         </div>
     </footer>
 
+    <script src="/public/src/aboutAnimation.js"></script>
 </body>
 
 </html>
