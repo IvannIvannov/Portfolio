@@ -1,36 +1,33 @@
-document.addEventListener('DOMContentLoaded', async () => {
+async function loadDashboard() {
     try {
-        const res = await fetch('/api/views');
-        const data = await res.json();
+        const res = await fetch("/api/views");
+        const pages = await res.json();
 
-        const labels = data.map(d => d.page);
-        const views = data.map(d => d.views);
+        let totalVisits = 0;
+        let topPage = "-";
+        let maxViews = 0;
 
-        const ctx = document.getElementById('viewsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Page Views',
-                    data: views,
-                    backgroundColor: 'rgba(97, 218, 251, 0.6)',
-                    borderColor: 'rgba(97, 218, 251, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false },
-                    title: { display: true, text: 'Page Views per Page' }
-                },
-                scales: {
-                    y: { beginAtZero: true }
-                }
+        pages.forEach(p => {
+            totalVisits += p.views;
+            if (p.views > maxViews) {
+                maxViews = p.views;
+                topPage = p.page.replace("/", "Home"); // пример за Home
             }
         });
+
+        document.getElementById("total-visits").textContent = totalVisits;
+        document.getElementById("top-page").textContent = topPage;
     } catch (err) {
-        console.error('Error loading dashboard data', err);
+        console.error("Error loading dashboard:", err);
     }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Увеличаваме посещението на страницата
+    fetch('/api/view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ page: window.location.pathname })
+    });
+    loadDashboard();
 });
