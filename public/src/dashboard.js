@@ -4,19 +4,32 @@ async function loadDashboard() {
         const pages = await res.json();
 
         let totalVisits = 0;
-        let topPage = "-";
-        let maxViews = 0;
-
-        pages.forEach(p => {
-            totalVisits += p.views;
-            if (p.views > maxViews) {
-                maxViews = p.views;
-                topPage = p.page.replace("/", "Home"); // пример за Home
-            }
-        });
-
+        pages.forEach(p => totalVisits += p.views);
         document.getElementById("total-visits").textContent = totalVisits;
-        document.getElementById("top-page").textContent = topPage;
+
+        // === Активни потребители за днешната дата ===
+        const today = new Date().toISOString().split("T")[0];
+        const key = "activeUsers_" + today;
+
+        // Вземаме текущия списък с активни потребители
+        let activeUsers = JSON.parse(localStorage.getItem(key)) || [];
+
+        // Уникален userID за всеки браузър
+        let userId = localStorage.getItem("userId");
+        if (!userId) {
+            userId = Math.random().toString(36).substring(2, 10);
+            localStorage.setItem("userId", userId);
+        }
+
+        // Добавяме потребителя, ако още не е в днешния списък
+        if (!activeUsers.includes(userId)) {
+            activeUsers.push(userId);
+            localStorage.setItem(key, JSON.stringify(activeUsers));
+        }
+
+        // Показваме броя на активните потребители за деня
+        document.getElementById("active-today").textContent = activeUsers.length;
+
     } catch (err) {
         console.error("Error loading dashboard:", err);
     }
@@ -29,5 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ page: window.location.pathname })
     });
+
     loadDashboard();
 });

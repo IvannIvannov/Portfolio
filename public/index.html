@@ -72,12 +72,11 @@
                 <span class="stat-label">Total Visits</span>
             </div>
             <div class="stat-card">
-                <p class="stat-number" id="top-page">-</p>
-                <span class="stat-label">Most Viewed Page</span>
+                <p class="stat-number" id="active-today">0</p>
+                <span class="stat-label">Active Users Today</span>
             </div>
         </div>
     </section>
-
 
     <section class="feedback">
         <h2>What They Say</h2>
@@ -127,14 +126,5 @@
     <script src="src/dashboard.js" defer></script>
 
 </body>
-
-<script>
-    fetch('/api/view', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ page: window.location.pathname })
-    });
-</script>
-
 
 </html>
