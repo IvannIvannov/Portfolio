@@ -7,6 +7,9 @@
     <title>Ivan Ivanov | Portfolio</title>
     <link rel="stylesheet" href="projects.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
+    <script src="/src/transition.js" defer></script>
 </head>
 
 <body>
@@ -58,14 +61,12 @@
                     <i class="fa-brands fa-github"></i> See all projects
                 </a>
             </div>
+            <button id="backToTop" title="Back to top">↑</button>
+
         </main>
 
     </div>
 
-    <!-- Barba.js + GSAP -->
-    <script src="https://unpkg.com/@barba/core"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
-    <script src="src/transition.js" defer></script>
     <script>
         // Project fade-in on scroll
         const projects = document.querySelectorAll('.project');

@@ -69,12 +69,12 @@ function fadeInProjects() {
     });
 }
 
-const backToTop = document.getElementById('backToTop');
-if (backToTop) {
+const backBtn = document.getElementById('backToTop');
+if (backBtn) {
     window.addEventListener('scroll', () => {
-        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        backBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    backToTop.addEventListener('click', () => {
+    backBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
