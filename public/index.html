@@ -8,118 +8,121 @@
     <link rel="stylesheet" href="home/home.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="src/feedbackAnimation.js" defer></script>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
+    <script src="src/transition.js" defer></script>
 </head>
 
 <body>
 
-    <header>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="projects/projects.html">Projects</a></li>
-                <li><a href="about/about.html">About</a></li>
-                <li><a href="contact/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Barba Wrapper -->
+    <div data-barba="wrapper">
+        <!-- Barba Container -->
+        <div data-barba="container" data-barba-namespace="home">
 
-    <main class="hero">
-        <div class="hero-left">
-            <p class="subtitle">Hello there! I'm</p>
-            <h1>Ivan Ivanov</h1>
-            <p class="description">
-                A passionate Front-End Developer crafting modern, responsive & interactive web experiences.
-            </p>
-            <div class="buttons">
-                <a href="projects/projects.html" class="btn">
-                    <i class="fa-solid fa-code"></i> View Projects
-                </a>
-                <a href="contact/contact.html" class="btn secondary">
-                    <i class="fa-solid fa-envelope"></i> Let's Talk
-                </a>
-                <a href="games/snake.html" class="btn" style="background:#61dafb; color:#232526;">
-                    <i class="fa-solid fa-gamepad"></i> Play Snake Game
-                </a>
-            </div>
-        </div>
+            <header>
+                <nav class="navbar">
+                    <ul class="nav-links">
+                        <li><a class="active" href="index.html">Home</a></li>
+                        <li><a href="projects/projects.html">Projects</a></li>
+                        <li><a href="about/about.html">About</a></li>
+                        <li><a href="contact/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-        <div class="hero-right">
-            <img src="src/images/coding-2-22.svg" alt="Hero Illustration" />
-        </div>
-    </main>
-
-    <section class="about-preview">
-        <div class="about-container reveal">
-            <div class="about-image">
-                <img src="src/images/Ме3.png" alt="Ivan Ivanov" />
-            </div>
-            <div class="about-text">
-                <h2>Hello, I am Ivan Ivanov</h2>
-                <p>I am a 22-year-old student at UFT with over 2 years of programming experience. I am passionate about
-                    building functional, visually appealing, and responsive web applications.</p>
-                <a href="about/about.html" class="btn about-btn">
-                    <i class="fa-solid fa-user"></i> About
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="dashboard">
-        <h2>Site Statistics</h2>
-        <div class="stats-container">
-            <div class="stat-card">
-                <p class="stat-number" id="total-visits">0</p>
-                <span class="stat-label">Total Visits</span>
-            </div>
-            <div class="stat-card">
-                <p class="stat-number" id="active-today">0</p>
-                <span class="stat-label">Active Users Today</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="feedback">
-        <h2>What They Say</h2>
-        <div class="feedback-container">
-            <div class="feedback-card reveal">
-                <p>“Excellent work! The project was completed on time and exceeded my expectations. He working great!”
-                </p>
-                <h4>Anastasia Paskaleva</h4>
-                <span>Freelance Client</span>
-            </div>
-            <div class="feedback-card reveal">
-                <p>“Ivan is a very responsible and creative programmer. We have been working together for two years
-                    now.”</p>
-                <h4>Nikolai Aramazov</h4>
-                <span>Team Lead</span>
-            </div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p>&copy; 2025 Ivan Ivanov. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="https://www.linkedin.com/in/ivan-ivanov-673972360/" target="_blank">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/IvannIvannov" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="src/assets/Ivan's CV (1).pdf" target="_blank" class="cv-download">
-                        <i class="fas fa-file-download"></i> Download CV
-                    </a>
+            <main class="hero">
+                <div class="hero-left">
+                    <p class="subtitle">Hello there! I'm</p>
+                    <h1>Ivan Ivanov</h1>
+                    <p class="description">
+                        A passionate Front-End Developer crafting modern, responsive & interactive web experiences.
+                    </p>
+                    <div class="buttons">
+                        <a href="projects/projects.html" class="btn"><i class="fa-solid fa-code"></i> View Projects</a>
+                        <a href="contact/contact.html" class="btn secondary"><i class="fa-solid fa-envelope"></i> Let's
+                            Talk</a>
+                        <a href="games/snake.html" class="btn" style="background:#61dafb; color:#232526;">
+                            <i class="fa-solid fa-gamepad"></i> Play Snake Game
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="footer-right">
-                <h3>Something about me</h3>
-                <p>A passionate developer creating modern and clean web applications. Always eager to learn and improve.
-                </p>
-            </div>
+                <div class="hero-right">
+                    <img src="src/images/coding-2-22.svg" alt="Hero Illustration" />
+                </div>
+            </main>
+
+            <section class="about-preview">
+                <div class="about-container reveal">
+                    <div class="about-image">
+                        <img src="src/images/Ме3.png" alt="Ivan Ivanov" />
+                    </div>
+                    <div class="about-text">
+                        <h2>Hello, I am Ivan Ivanov</h2>
+                        <p>I am a 22-year-old student at UFT with over 2 years of programming experience. I am
+                            passionate about
+                            building functional, visually appealing, and responsive web applications.</p>
+                        <a href="about/about.html" class="btn about-btn"><i class="fa-solid fa-user"></i> About</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard">
+                <h2>Site Statistics</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <p class="stat-number" id="total-visits">0</p>
+                        <span class="stat-label">Total Visits</span>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number" id="active-today">0</p>
+                        <span class="stat-label">Active Users Today</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="feedback">
+                <h2>What They Say</h2>
+                <div class="feedback-container">
+                    <div class="feedback-card reveal">
+                        <p>“Excellent work! The project was completed on time and exceeded my expectations. He worked
+                            great!”</p>
+                        <h4>Anastasia Paskaleva</h4>
+                        <span>Freelance Client</span>
+                    </div>
+                    <div class="feedback-card reveal">
+                        <p>“Ivan is a very responsible and creative programmer. We have been working together for two
+                            years now.”</p>
+                        <h4>Nikolai Aramazov</h4>
+                        <span>Team Lead</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <p>&copy; 2025 Ivan Ivanov. All rights reserved.</p>
+                        <div class="footer-links">
+                            <a href="https://www.linkedin.com/in/ivan-ivanov-673972360/" target="_blank"><i
+                                    class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/IvannIvannov" target="_blank"><i class="fab fa-github"></i>
+                                GitHub</a>
+                            <a href="src/assets/Ivan's CV (1).pdf" target="_blank" class="cv-download"><i
+                                    class="fas fa-file-download"></i> Download CV</a>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <h3>Something about me</h3>
+                        <p>A passionate developer creating modern and clean web applications. Always eager to learn and
+                            improve.</p>
+                    </div>
+                </div>
+            </footer>
+
         </div>
-    </footer>
+    </div>
 
     <script src="src/aboutAnimation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

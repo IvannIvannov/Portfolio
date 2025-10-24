@@ -11,203 +11,174 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/projects/projects.html">Projects</a></li>
-                <li><a class="active" href="about.html">About</a></li>
-                <li><a href="/contact/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div data-barba="wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/projects/projects.html">Projects</a></li>
+                    <li><a class="active" href="about.html">About</a></li>
+                    <li><a href="/contact/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section class="image-banner">
-        <div class="about-content">
-            <h1>About</h1>
-            <p>I'm a junior front-end developer</p>
-        </div>
-    </section>
-
-    <main class="about-main">
-        <div class="about-text">
-            <h2>Who I am?</h2>
-            <p>
-                I am a young and ambitious developer working with React and Angular to build modern, dynamic web
-                applications.
-            </p>
-            <button class="contact-btn" onclick="location.href='../contact/contact.html'">Contact</button>
-        </div>
-
-        <div class="about-images">
-            <img src="/src/images/css-13.svg" alt="React Logo" class="img-one" />
-        </div>
-
-
-    </main>
-
-    <section class="certificates-section">
-        <h2>My Certificates</h2>
-
-        <div class="certificates-carousel">
-            <div class="carousel-track">
-                <div class="certificate">
-                    <img src="/src/images/Fundamentals.jpeg" alt="Certificate 1" />
-                    <p>Programming Fundamentals - SoftUni</p>
+        <main data-barba="container" data-barba-namespace="about">
+            <section class="image-banner">
+                <div class="about-content">
+                    <h1>About</h1>
+                    <p>I'm a junior front-end developer</p>
                 </div>
-                <div class="certificate">
-                    <img src="/src/images/Advanced.jpeg" alt="Certificate 2" />
-                    <p>JS Advanced - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/HTML&CSS.jpeg" alt="Certificate 3" />
-                    <p>HTML & CSS - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/Angular.jpeg" alt="Certificate 4" />
-                    <p>Angular - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/Back-End.jpeg" alt="Certificate 5" />
-                    <p>JS Back-End - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/ReactJS.jpeg" alt="Certificate 6" />
-                    <p>ReactJS - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/IT.jpeg" alt="Certificate 7" />
-                    <p>IT Career Booster - SoftUni</p>
-                </div>
-                <div class="certificate">
-                    <img src="/src/images/TS.jpeg" alt="Certificate 8" />
-                    <p>TypeScript - SoftUni</p>
-                </div>
-            </div>
+            </section>
 
-            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-
-    <section class="skills-section">
-        <h2>My Skills</h2>
-        <div class="skills-container">
-
-            <div class="skill">
-                <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 85%;"></div>
+            <section class="about-main">
+                <div class="about-text">
+                    <h2>Who I am?</h2>
+                    <p>I am a young and ambitious developer working with React and Angular to build modern, dynamic web
+                        applications.</p>
+                    <button class="contact-btn" onclick="location.href='../contact/contact.html'">Contact</button>
                 </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-react-original colored"></i> React</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 70%;"></div>
+                <div class="about-images">
+                    <img src="/src/images/css-13.svg" alt="React Logo" class="img-one" />
                 </div>
-            </div>
+            </section>
 
-            <div class="skill">
-                <span><i class="devicon-angularjs-plain colored"></i> Angular</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 50%;"></div>
+            <section class="certificates-section">
+                <h2>My Certificates</h2>
+                <div class="certificates-carousel">
+                    <div class="carousel-track">
+                        <div class="certificate">
+                            <img src="/src/images/Fundamentals.jpeg" alt="Certificate 1" />
+                            <p>Programming Fundamentals - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/Advanced.jpeg" alt="Certificate 2" />
+                            <p>JS Advanced - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/HTML&CSS.jpeg" alt="Certificate 3" />
+                            <p>HTML & CSS - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/Angular.jpeg" alt="Certificate 4" />
+                            <p>Angular - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/Back-End.jpeg" alt="Certificate 5" />
+                            <p>JS Back-End - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/ReactJS.jpeg" alt="Certificate 6" />
+                            <p>ReactJS - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/IT.jpeg" alt="Certificate 7" />
+                            <p>IT Career Booster - SoftUni</p>
+                        </div>
+                        <div class="certificate">
+                            <img src="/src/images/TS.jpeg" alt="Certificate 8" />
+                            <p>TypeScript - SoftUni</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                 </div>
-            </div>
+            </section>
 
-            <div class="skill">
-                <span><i class="devicon-html5-plain colored"></i> HTML &amp; CSS</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 90%;"></div>
+            <section class="skills-section">
+                <h2>My Skills</h2>
+                <div class="skills-container">
+                    <div class="skill"><span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-react-original colored"></i> React</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-angularjs-plain colored"></i> Angular</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-html5-plain colored"></i> HTML &amp; CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-cplusplus-plain colored"></i> C++</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-c-plain colored"></i> C</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-csharp-plain colored"></i> C#</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-java-plain colored"></i> Java</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-microsoftoffice-plain colored"></i> Microsoft
+                            Office</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill"><span><i class="devicon-git-plain colored"></i> Git</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 60%;"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="skill">
-                <span><i class="devicon-typescript-plain colored"></i> TypeScript</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 70%;"></div>
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <p>&copy; 2025 Ivan Ivanov. All rights reserved.</p>
+                        <div class="footer-links">
+                            <a href="https://www.linkedin.com/in/ivan-ivanov-673972360/" target="_blank"><i
+                                    class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/IvannIvannov" target="_blank"><i class="fab fa-github"></i>
+                                GitHub</a>
+                            <a href="/src/assets/Ivan's CV (1).pdf" target="_blank" class="cv-download"><i
+                                    class="fas fa-file-download"></i> Download CV</a>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <h3>Something about me</h3>
+                        <p>A passionate developer creating modern and clean web applications. Always eager to learn and
+                            improve.</p>
+                    </div>
                 </div>
-            </div>
+            </footer>
+        </main>
+    </div>
 
-            <div class="skill">
-                <span><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 60%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-cplusplus-plain colored"></i> C++</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 50%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-c-plain colored"></i> C</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 50%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-csharp-plain colored"></i> C#</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 50%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-java-plain colored"></i> Java</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 50%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-microsoftoffice-plain colored"></i> Microsoft Office</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 80%;"></div>
-                </div>
-            </div>
-
-            <div class="skill">
-                <span><i class="devicon-git-plain colored"></i> Git</span>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 60%;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p>&copy; 2025 Ivan Ivanov. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="https://www.linkedin.com/in/ivan-ivanov-673972360/" target="_blank">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/IvannIvannov" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="/src/assets/Ivan's CV (1).pdf" target="_blank" class="cv-download">
-                        <i class="fas fa-file-download"></i> Download CV
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-right">
-                <h3>Something about me</h3>
-                <p>A passionate developer creating modern and clean web applications. Always eager to learn and improve.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Външен JS за карусела -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
     <script src="/src/certificates.js"></script>
+    <script src="/src/transition.js"></script>
 </body>
 
 </html>
