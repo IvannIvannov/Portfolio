@@ -24,12 +24,9 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(97, 218, 251, 0.1), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(237, 236, 238, 0.15), transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(97, 218, 251, 0.05), transparent 60%);
+  background: radial-gradient(circle at 80% 70%, rgba(97, 218, 251, 0.25), transparent 40%),
+    linear-gradient(135deg, #61dafb 0%, #203a43 60%, #0f2027 100%);
   background-blend-mode: screen;
-  /* прави цветовете да се преливат по-гладко */
   pointer-events: none;
   z-index: -1;
 }
@@ -229,13 +226,14 @@ nav a.active {
 
 .dashboard {
   padding: 50px 20px;
- background: linear-gradient(to right, #ffffff, #cccccc);
+  background: radial-gradient(circle at 20% 30%, rgba(97, 218, 251, 0.25), transparent 40%),
+    linear-gradient(135deg, #0f2027 0%, #203a43 40%, #61dafb 100%);
   color: #eaeaea;
   text-align: center;
-  margin-bottom: none;
   max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 0 25px rgba(97, 218, 251, 0.2);
 }
 
 .dashboard h2 {
@@ -463,9 +461,12 @@ nav a.active {
 /* Контейнер за "achievement" */
 .achievement {
   position: fixed;
-  top: 80px;           /* под навигацията */
-  left: 50%;           /* центрирано хоризонтално */
-  transform: translateX(-50%) scale(0); /* центриране и скрито първоначално */
+  top: 80px;
+  /* под навигацията */
+  left: 50%;
+  /* центрирано хоризонтално */
+  transform: translateX(-50%) scale(0);
+  /* центриране и скрито първоначално */
   background: #61dafb;
   color: #fff;
   padding: 16px 24px;
@@ -490,10 +491,21 @@ nav a.active {
 }
 
 @keyframes pixelBounce {
-  0% { transform: translateX(-50%) translateY(-50%) scale(0.5); }
-  50% { transform: translateX(-50%) translateY(-50%) scale(1.1); }
-  70% { transform: translateX(-50%) translateY(-50%) scale(0.9); }
-  100% { transform: translateX(-50%) translateY(-50%) scale(1); }
+  0% {
+    transform: translateX(-50%) translateY(-50%) scale(0.5);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-50%) scale(1.1);
+  }
+
+  70% {
+    transform: translateX(-50%) translateY(-50%) scale(0.9);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%) scale(1);
+  }
 }
 
 /* Animations */
