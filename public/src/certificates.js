@@ -2,24 +2,43 @@ const track = document.querySelector('.carousel-track');
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
 
-const certificates = track.children;
-const scrollAmount = 300;
+const scrollAmount = 300; 
+let isScrolling = false;
 
 function scrollNext() {
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth) return;
-    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    if (isScrolling) return;
+    isScrolling = true;
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    if (track.scrollLeft + scrollAmount >= maxScroll) {
+        const remaining = maxScroll - track.scrollLeft;
+        track.scrollBy({ left: remaining, behavior: 'smooth' });
+
+        setTimeout(() => {
+            track.scrollLeft = 0;
+            isScrolling = false;
+        }, 500);
+    } else {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        setTimeout(() => isScrolling = false, 500);
+    }
 }
 
 function scrollPrev() {
-    if (track.scrollLeft <= 0) return;
-    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    if (isScrolling) return;
+    isScrolling = true;
+
+    if (track.scrollLeft - scrollAmount <= 0) {
+        track.scrollLeft = track.scrollWidth - track.clientWidth;
+        isScrolling = false;
+    } else {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        setTimeout(() => isScrolling = false, 500);
+    }
 }
 
 nextBtn.addEventListener('click', scrollNext);
 prevBtn.addEventListener('click', scrollPrev);
 
-setInterval(() => {
-    if (track.scrollLeft + track.clientWidth < track.scrollWidth) {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-}, 5000);
+setInterval(scrollNext, 3000);
