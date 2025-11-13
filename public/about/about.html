@@ -43,7 +43,7 @@
                 </div>
             </section>
 
-            <section class="certificates-section">
+            <section class="certificates-section hidden">
                 <h2>My Certificates</h2>
                 <div class="certificates-carousel">
                     <div class="carousel-track">
@@ -85,7 +85,7 @@
                 </div>
             </section>
 
-            <section class="timeline-section">
+            <section class="timeline-section hidden">
                 <h2>My Experience Timeline</h2>
                 <div class="timeline">
                     <div class="timeline-item left">
@@ -101,7 +101,8 @@
                             <h3>2022</h3>
                             <p>Started my first year at university, exploring <strong>C</strong> and
                                 <strong>C++</strong>. These languages taught me how programming works at its core and
-                                strengthened my problem-solving mindset.</p>
+                                strengthened my problem-solving mindset.
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item left">
@@ -132,8 +133,7 @@
                 </div>
             </section>
 
-
-            <section class="skills-section">
+            <section class="skills-section hidden">
                 <h2>My Skills</h2>
                 <div class="skills-container">
                     <div class="skill"><span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
@@ -227,6 +227,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
     <script src="/src/certificates.js"></script>
     <script src="/src/transition.js"></script>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
