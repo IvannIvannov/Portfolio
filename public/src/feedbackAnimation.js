@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!track || slides.length === 0 || !dotsContainer) return;
 
-  // Колко карти се виждат според ширината на екрана
   function getVisibleCount() {
     const width = window.innerWidth;
     if (width <= 768) return 1;
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalSteps = Math.max(slides.length - visibleCount + 1, 1);
   let index = 0;
 
-  // Създаваме точките според броя стъпки
   function createDots() {
     dotsContainer.innerHTML = "";
     for (let i = 0; i < totalSteps; i++) {
@@ -45,23 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function goTo(i) {
     if (totalSteps <= 1) return;
-    index = (i + totalSteps) % totalSteps; // wrap around
+    index = (i + totalSteps) % totalSteps;
     track.style.transition = "transform 0.5s ease";
     updatePosition();
     updateDots();
   }
 
-  // Dot navigation
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => goTo(i));
   });
 
-  // Autoplay
   let interval = setInterval(() => {
     goTo(index + 1);
   }, 3000);
 
-  // При resize – преизчисляваме layout-а
   window.addEventListener("resize", () => {
     const oldVisible = visibleCount;
     visibleCount = getVisibleCount();
@@ -79,18 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // първоначална позиция
   track.style.transition = "none";
   updatePosition();
-
-  // =========================
-  // Scroll reveal за feedback картите
-  // =========================
 
   const feedbackCards = document.querySelectorAll(".feedback-card");
 
   if (feedbackCards.length) {
-    // даваме им начален клас .reveal (ползва твоя CSS)
+    
     feedbackCards.forEach(card => card.classList.add("reveal"));
 
     const observer = new IntersectionObserver(
@@ -98,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // анимацията е еднократна
+            observer.unobserve(entry.target); 
           }
         });
       },
