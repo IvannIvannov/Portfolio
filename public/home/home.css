@@ -407,16 +407,12 @@ nav a.active {
   letter-spacing: 0.14em;
 }
 
-/* Hover – по-силно синьо + малко по-ярък gradient */
 .feedback-card:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(135deg, #232526, #2c5364);
-  box-shadow:
-    0 8px 25px rgba(97, 218, 251, 0.35),
-    0 0 0 1px rgba(97, 218, 251, 0.7);
-  border-color: #61dafb;
+  transform: translateY(-3px); /* малко повдигане – едва забележимо */
+  background: linear-gradient(to right, #232526, #2b2c2e); /* леко изсветляване */
+  border-color: rgba(97, 218, 251, 0.5); /* по-мек син контур */
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.15); /* много леко */
 }
-
 
 /* Responsive – 2 карти на tablet, 1 на мобилен */
 @media (max-width: 1024px) {
