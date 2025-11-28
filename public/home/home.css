@@ -329,18 +329,14 @@ nav a.active {
   transition: transform 0.5s ease;
 }
 
-/* Картите – няколко в ред */
-/* Картите – няколко в ред, със същата палитра като stat-card / dashboard */
 .feedback-card {
-  flex: 0 0 calc(33.333% - 14px);  /* 3 карти на ред на desktop */
+  flex: 0 0 calc(33.333% - 14px); 
   box-sizing: border-box;
 
-  /* фон, близък до .stat-card и общата тема */
-  background: linear-gradient(to right, #232526, #232425);
+  background: linear-gradient(to right, #232526, #414345);
   padding: 28px 22px;
   border-radius: 14px;
 
-  /* рамка и сянка с React синьо, както при бутоните и dashboard */
   border: 1px solid rgba(97, 218, 251, 0.35);
   box-shadow:
     0 4px 15px rgba(97, 218, 251, 0.18),
@@ -384,7 +380,7 @@ nav a.active {
 }
 
 .feedback-card h4 {
-  color: #61dafb; /* същият акцент като бутоните и бордера на about снимката */
+  color: #61dafb; 
   font-weight: 600;
   margin-bottom: 4px;
   letter-spacing: 0.04em;
@@ -392,14 +388,13 @@ nav a.active {
   font-size: 0.9rem;
 }
 
-/* Ролята – малък badge, следващ dashboard / stat-card vibe */
 .feedback-card span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 3px 9px;
   border-radius: 999px;
-  background: rgba(27, 28, 30, 0.9); /* близко до body background */
+  background: rgba(27, 28, 30, 0.9);
   border: 1px solid rgba(97, 218, 251, 0.4);
   color: #eaeaea;
   font-size: 0.75rem;
@@ -408,22 +403,20 @@ nav a.active {
 }
 
 .feedback-card:hover {
-  transform: translateY(-3px); /* малко повдигане – едва забележимо */
-  background: linear-gradient(to right, #232526, #2b2c2e); /* леко изсветляване */
-  border-color: rgba(97, 218, 251, 0.5); /* по-мек син контур */
-  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.15); /* много леко */
+  background: linear-gradient(to right, #232526, #2b2c2e); 
+  border-color: rgba(97, 218, 251, 0.5);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.15); 
 }
 
-/* Responsive – 2 карти на tablet, 1 на мобилен */
 @media (max-width: 1024px) {
   .feedback-card {
-    flex: 0 0 calc(50% - 10px); /* 2 на ред */
+    flex: 0 0 calc(50% - 10px); 
   }
 }
 
 @media (max-width: 768px) {
   .feedback-card {
-    flex: 0 0 100%; /* 1 на ред */
+    flex: 0 0 100%; 
     border-radius: 16px;
   }
 
@@ -433,6 +426,8 @@ nav a.active {
     right: 10px;
   }
 }
+
+
 
 .site-footer {
   width: 100%;

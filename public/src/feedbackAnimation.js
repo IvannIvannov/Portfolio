@@ -82,4 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // първоначална позиция
   track.style.transition = "none";
   updatePosition();
+
+  // =========================
+  // Scroll reveal за feedback картите
+  // =========================
+
+  const feedbackCards = document.querySelectorAll(".feedback-card");
+
+  if (feedbackCards.length) {
+    // даваме им начален клас .reveal (ползва твоя CSS)
+    feedbackCards.forEach(card => card.classList.add("reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // анимацията е еднократна
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    feedbackCards.forEach(card => observer.observe(card));
+  }
 });
