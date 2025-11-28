@@ -3,58 +3,83 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = Array.from(track.children);
   const dotsContainer = document.querySelector(".carousel-dots");
 
-  // Clone first & last slide → smooth infinite loop
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
+  if (!track || slides.length === 0 || !dotsContainer) return;
 
-  firstClone.classList.add("clone");
-  lastClone.classList.add("clone");
+  // Колко карти се виждат според ширината на екрана
+  function getVisibleCount() {
+    const width = window.innerWidth;
+    if (width <= 768) return 1;
+    if (width <= 1024) return 2;
+    return 3;
+  }
 
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
+  let visibleCount = getVisibleCount();
+  let totalSteps = Math.max(slides.length - visibleCount + 1, 1);
+  let index = 0;
 
-  let index = 1; // Start from the first real slide
+  // Създаваме точките според броя стъпки
+  function createDots() {
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i < totalSteps; i++) {
+      const dot = document.createElement("button");
+      if (i === 0) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
+    }
+    return Array.from(dotsContainer.children);
+  }
 
-  track.style.transform = `translateX(-${index * 100}%)`;
-
-  // Create dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    if (i === 0) dot.classList.add("active");
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = Array.from(dotsContainer.children);
+  let dots = createDots();
 
   function updateDots() {
     dots.forEach(d => d.classList.remove("active"));
-    dots[(index - 1 + slides.length) % slides.length].classList.add("active");
+    dots[index].classList.add("active");
   }
 
-  function moveToSlide(i) {
+  function updatePosition() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || "0");
+    const offset = (slideWidth + gap) * index;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function goTo(i) {
+    if (totalSteps <= 1) return;
+    index = (i + totalSteps) % totalSteps; // wrap around
     track.style.transition = "transform 0.5s ease";
-    index = i;
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  // Infinite loop fix after transition
-  track.addEventListener("transitionend", () => {
-    const currentSlide = track.children[index];
-    if (currentSlide.classList.contains("clone")) {
-      track.style.transition = "none";
-      index = index === 0 ? slides.length : 1;
-      track.style.transform = `translateX(-${index * 100}%)`;
-    }
+    updatePosition();
     updateDots();
-  });
+  }
 
   // Dot navigation
   dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => moveToSlide(i + 1));
+    dot.addEventListener("click", () => goTo(i));
   });
 
   // Autoplay
-  setInterval(() => {
-    moveToSlide(index + 1);
+  let interval = setInterval(() => {
+    goTo(index + 1);
   }, 3000);
+
+  // При resize – преизчисляваме layout-а
+  window.addEventListener("resize", () => {
+    const oldVisible = visibleCount;
+    visibleCount = getVisibleCount();
+    const newTotal = Math.max(slides.length - visibleCount + 1, 1);
+
+    if (newTotal !== totalSteps || oldVisible !== visibleCount) {
+      totalSteps = newTotal;
+      index = 0;
+      dots = createDots();
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => goTo(i));
+      });
+      track.style.transition = "none";
+      updatePosition();
+    }
+  });
+
+  // първоначална позиция
+  track.style.transition = "none";
+  updatePosition();
 });
