@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".feedback-track");
   const slides = Array.from(track.children);
-
-  const nextBtn = document.querySelector(".next");
-  const prevBtn = document.querySelector(".prev");
   const dotsContainer = document.querySelector(".carousel-dots");
 
   // Clone first & last slide → smooth infinite loop
@@ -16,12 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   track.appendChild(firstClone);
   track.insertBefore(lastClone, slides[0]);
 
-  let index = 1;
-  const totalSlides = slides.length + 2;
+  let index = 1; // Start from the first real slide
 
   track.style.transform = `translateX(-${index * 100}%)`;
 
-  // Dots
+  // Create dots
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
     if (i === 0) dot.classList.add("active");
@@ -41,8 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
+  // Infinite loop fix after transition
   track.addEventListener("transitionend", () => {
-    if (track.children[index].classList.contains("clone")) {
+    const currentSlide = track.children[index];
+    if (currentSlide.classList.contains("clone")) {
       track.style.transition = "none";
       index = index === 0 ? slides.length : 1;
       track.style.transform = `translateX(-${index * 100}%)`;
@@ -50,13 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
     updateDots();
   });
 
-  nextBtn.addEventListener("click", () => moveToSlide(index + 1));
-  prevBtn.addEventListener("click", () => moveToSlide(index - 1));
-
+  // Dot navigation
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => moveToSlide(i + 1));
   });
 
+  // Autoplay
   setInterval(() => {
     moveToSlide(index + 1);
   }, 3000);
